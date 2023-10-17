@@ -34,9 +34,9 @@ void setup() {
 void set_parameter(uint8_t parameter, int32_t value) {
   value = value * 32;
   CAN.beginPacket(0x601); // SDO
-  CAN.write(0x40);        // Set
-  CAN.write(0x01);        // Parameter by ID
-  CAN.write(0x20);        // Parameter by ID
+  CAN.write(0x23);        // Set
+  CAN.write(0x00);        // Parameter by ID
+  CAN.write(0x21);        // Parameter by ID
   CAN.write(parameter);   // Parameter ID
   CAN.write(value >> 0);
   CAN.write(value >> 8);
@@ -74,8 +74,8 @@ void loop() {
       set_throtmax(100);
       set_brkmax(-20);
     } else if(mode == MODE_ECO) {
-      set_throtmax(55);
-      set_brkmax(-30);
+      set_throtmax(60);
+      set_brkmax(-75);
     } else if(mode == MODE_OFFROAD) {
       set_throtmax(75);
       set_brkmax(-75);
